@@ -12,19 +12,23 @@
     <button id="times-btn">乘</button>
     <button id="divide-btn">除</button>
     <p id="result">运算结果</p>
-    <script>
+    <script>  
       document.getElementById("add-btn").onclick=function (){
           document.getElementById("result").innerHTML=  document.getElementById("first-number").value+document.getElementById("second-number").value;
       }
-      document.getElementById("minus-btn").onclick=function (){
+      document.getElementById("minus-btn").onclick=function (){ 
           document.getElementById("result").innerHTML=document.getElementById("first-number").value - document.getElementById("second-number").value;
       }
       document.getElementById("times-btn").onclick=function (){
-          document.getElementById("result").innerHTML=document.getElementById("first-number").value * document.getElementById("second-number").value;
+        document.getElementById("result").innerHTML=document.getElementById("first-number").value * document.getElementById("second-number").value;
       }
       document.getElementById("divide-btn").onclick=function (){
+        if(document.getElementById("second-number").value==0){
+            document.getElementById("result").innerHTML=document.write("value");
+        }  else{
           document.getElementById("result").innerHTML=document.getElementById("first-number").value / document.getElementById("second-number").value;
-      }
+        }
+        }
     </script>
 </body>
 </html>

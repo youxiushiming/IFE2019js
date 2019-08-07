@@ -23,6 +23,14 @@
 document.getElementById("touch").onclick=function(){
     alert(document.getElementById("des").innerHTML="Hi"+document.getElementById("description").innerHTML);
 }
+var d = new Date();
+if(d.getHours()>8&&d.getHours()<12){
+alert("morning!");
+}else if(d.getHours()>=12&&d.getHours()<14){
+    alert("afternoon!");
+}else{
+    alert("night!")
+}
 </script>
 
 </body>
