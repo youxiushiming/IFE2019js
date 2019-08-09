@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JS里的居民们4</title>
+
+</head>
+<body>
+        <input id="queue-input" type="text">
+        <p id="queue-cont">队列内容：apple-&gt;pear</p>    
+        <button id="in-btn">入队</button>
+        <button id="out-btn">出队</button>
+        <button id="font-btn">打印队头元素内容</button>
+        <button id="empty-btn">判断队列是否为空</button>
+        
+        <script>
+        
+        var queue = ["apple", "pear"];
+        var input=document.getElementById("queue-input");
+        var cont=document.getElementById("queue-cont");
+        var button1=document.getElementById("in-btn");
+        var button2=document.getElementById("out-btn");
+        var button3=document.getElementById("font-btn");
+        var button4=document.getElementById("empty-btn");
+        button1.addEventListener("click",function(){
+                queue.unshift(input.value);
+                cont.innerHTML=queue.join("->");
+        })
+        
+            button2.addEventListener("click",function(){
+                queue.pop();
+                cont.innerHTML=queue.join("->");
+            })
+            button3.addEventListener("click",function(){
+                var q=queue[queue.length-1];
+                cont.innerHTML=q;
+            })
+            button4.addEventListener("click",function(){
+            if(queue.length==0){
+                console.log("666");
+                cont.innerHTML="666";
+            }else{
+                console.log("flow");
+                cont.innerHTML="flow";
+            }
+        })
+        </script>
+</body>
+</html>

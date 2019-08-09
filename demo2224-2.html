@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>JS里的居民们2</title>
+
+</head>
+
+<body>
+    <div>
+        <label>String A:
+            <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+        </label>
+        <textarea id="str-a"></textarea>
+        <label>String B:
+            <input id="radio-b" type="radio" name="str-obj" value="b">
+        </label>
+        <textarea id="str-b"></textarea>
+        <label>Num A：<input id="num-a" type="number" value="0"></label>
+        <label>Num B：<input id="num-b" type="number" value="1"></label>
+    </div>
+    <div>
+        <button>获取当前选中输入的内容长度</button>
+        <button>当前选中输入中的第3个字符</button>
+        <button>把两个输入框的文字连接在一起输出（concat）</button>
+        <button>输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+        <button>输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+        <button>使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+        <button>当前选中输入框的行数</button>
+        <button>使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+        <button>把所选输入框中的内容全部转为大写</button>
+        <button>把所选输入框中的内容全部转为小写</button>
+        <button>把所选输入框中内容的半角空格全部去除</button>
+        <button>把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+    </div>
+    <p id="result"></p>
+    <script>
+        const numA = document.getElementById("num-a");
+        numB = document.getElementById("num-b");
+        radioA = document.getElementById("radio-a");
+        radioB = document.getElementById("radio-b");
+        strA = document.getElementById("str-a");
+        strB = document.getElementById("str-b");
+        buttons = document.getElementsByTagName("button"); //按钮数组
+        p = document.getElementById("result");
+        //定义数字检查
+        function isNumber(num) {
+            if (!isNaN(num.value) && num.value != "") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //定义勾选检查
+        function isCheck(check) {
+            if (check.checked) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //按钮1监听点击，实现获取当前选中输入的内容长度
+        buttons[0].addEventListener("click", function () {
+            if (isCheck(radioA)) {
+                p.innerHTML = "当前输入内容长度为：" + strA.value.length;
+            }
+            if (isCheck(radioB)) {
+                p.innerHTML = "当前输入内容长度为：" + strB.value.length;
+            }
+        })
+        //按钮2监听点击，实现获取当前选中输入中的第3个字符
+        buttons[1].addEventListener("click", function () {
+            if (isCheck(radioA)) {
+                p.innerHTML = "当前选中的第三个字符为：" + strA.value.charAt(2);
+            }
+            if (isCheck(radioB)) {
+                p.innerHTML = "当前选中的第三个字符为：" + strB.value.charAt(2);
+            }
+        })
+        //按钮3监听点击，实现把两个输入框的文字连接在一起输出（concat）
+        buttons[2].addEventListener("click", function () {
+            p.innerHTML = "两个输入框的文字连接在一起输出为：" + strA.value.concat(strB.value);
+        })
+        //按钮4监听点击，实现输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）
+        buttons[3].addEventListener("click", function () {
+            p.innerHTML = "B在A中第一次出现的位置为：" + strA.value.indexOf(strB.value);
+        })
+        //按钮5监听点击，实现输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）
+        buttons[4].addEventListener("click", function () {
+            p.innerHTML = "A在B中第一次出现的位置为：" + strB.value.lastIndexOf(strA.value);
+        })
+        //按钮6监听点击，实现使用slice获取选中输入框内容的部分内容，参数为num-a及num-b
+        buttons[5].addEventListener("click", function () {
+            if (isCheck(radioA)) {
+                p.innerHTML = "选中字符串被截取的部分为：" + strA.value.slice(numA.value, numB.value);
+            }
+            if (isCheck(radioB)) {
+                p.innerHTML = "选中字符串被截取的部分为：" + strB.value.slice(numA.value, numB.value);
+            }
+        })
+        //按钮7监听点击，实现当前选中输入框的行数
+        buttons[6].addEventListener("click", function () {
+            if (isCheck(radioA)) {
+                p.innerHTML = "当前选中输入框的行数为：" + strA.value.split(/\r?\n|\r/).length; //window是\r\n(回车换行),mac是\r（回车）
+            }
+            if (isCheck(radioB)) {
+                p.innerHTML = "当前选中输入框的行数为：" + strB.value.split(/\r?\n|\r/).length; //？匹配0或1次
+            }
+        })
+        //按钮8监听点击，实现使用substr获取选中输入框内容的子字符串，参数为num-a（起始位置）及num-b（长度）
+        buttons[7].addEventListener("click", function () {
+            if (isCheck(radioA)) {
+                p.innerHTML = "选中字符串被截取的部分为：" + strA.value.substr(numA.value, numB.value);
+            }
+            if (isCheck(radioB)) {
+                p.innerHTML = "选中字符串被截取的部分为：" + strB.value.substr(numA.value, numB.value);
+            }
+        })
+        //按钮9监听点击，实现把所选输入框中的内容全部转为大写
+        buttons[8].addEventListener("click", function () {
+            if (isCheck(radioA)) {
+                p.innerHTML = "选中字符串转大写为：" + strA.value.toUpperCase()
+            }
+            if (isCheck(radioB)) {
+                p.innerHTML = "选中字符串转大写为：" + strB.value.toUpperCase()
+            }
+        })
+        //按钮10监听点击，实现把所选输入框中的内容全部转为小写
+        buttons[9].addEventListener("click", function () {
+            if (isCheck(radioA)) {
+                p.innerHTML = "选中字符串转小写为：" + strA.value.toLowerCase()
+            }
+            if (isCheck(radioB)) {
+                p.innerHTML = "选中字符串转小写为：" + strB.value.toLowerCase()
+            }
+
+        })
+        //按钮11监听点击，实现把所选输入框中内容的半角空格全部去除
+        buttons[10].addEventListener("click", function () {
+            if (isCheck(radioA)) {
+                p.innerHTML = "选中半角空格全部去除为：" + strA.value.replace(/\s+/g, "");
+                //全局匹配一次或多次S（匹配任何空白字符，包括空格、制表符、换页符等等。）
+            }
+            if (isCheck(radioB)) {
+                p.innerHTML = "选中半角空格全部去除为：" + strB.value.replace(/\s+/g, "");
+            }
+        })
+        //按钮12监听点击，实现把所选输入框中内容的a全部替换成另外一个输入框中的内容
+        buttons[11].addEventListener("click", function () {
+            if (isCheck(radioA)) {
+                p.innerHTML = "选中半角空格全部去除为：" + strA.value.replace(strA.value, strB.value);
+                //全局匹配一次或多次S（匹配任何空白字符，包括空格、制表符、换页符等等。）
+            }
+            if (isCheck(radioB)) {
+                p.innerHTML = "选中半角空格全部去除为：" + strB.value.replace(strB.value, strA.value);
+            }
+        })
+    </script>
+</body>
+
+</html>

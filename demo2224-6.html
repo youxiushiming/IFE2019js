@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JS里的居民们4</title>
+
+</head>
+<body>
+        <input id="stack-input" type="text">
+<p id="stack-cont">栈内容：apple-gt;pear</p>    
+<button id="push-btn">进栈</button>
+<button id="pop-btn">退栈</button>
+<button id="font-btn">打印栈顶元素内容</button>
+<button id="empty-btn">判断栈是否为空</button>
+
+<script>
+
+var stack = ["apple", "pear"];
+        var input=document.getElementById("stack-input");
+        var cont=document.getElementById("stack-cont");
+        var button1=document.getElementById("push-btn");
+        var button2=document.getElementById("po-btn");
+        var button3=document.getElementById("font-btn");
+        var button4=document.getElementById("empty-btn");
+        button1.addEventListener("click",function(obj){
+                queue.unshift(input.value);
+                cont.innerHTML=queue.join("->");
+        })
+        
+            button2.addEventListener("click",function(){
+                queue.shift();
+                cont.innerHTML=queue.join("->");
+            })
+            button3.addEventListener("click",function(obj){
+                cont.innerHTML=stack[stack.length-1];
+            })
+            button4.addEventListener("click",function(){
+            if(stack.length==0){
+               cont.innerHTML("666");
+            }else{
+                cont.innerHTML="empty";
+            }
+        })
+        </script>
+</body>
+</html>
